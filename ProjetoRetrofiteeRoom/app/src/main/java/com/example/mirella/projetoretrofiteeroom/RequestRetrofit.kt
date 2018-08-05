@@ -1,6 +1,7 @@
 package com.example.mirella.projetoretrofiteeroom
 
 import android.util.Log
+import com.example.mirella.projetoretrofiteeroom.model.Person
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -42,6 +43,25 @@ object RequestRetrofit {
             }
 
             override fun onResponse(call: Call<FilmResult>?, response: Response<FilmResult>?) {
+                response?.body()?.let {
+                    val film = it
+                    success(film)
+
+                    Log.e("onFailure error", "Sucesso")
+                }
+            }
+        })
+    }
+
+    fun person(success : (Any) -> Unit){
+        val call = service.loadPerson("1")
+
+        call.enqueue(object : Callback<Person> {
+            override fun onFailure(call: Call<Person>?, t: Throwable?) {
+                Log.e("onFailure error", t?.message)
+            }
+
+            override fun onResponse(call: Call<Person>?, response: Response<Person>?) {
                 response?.body()?.let {
                     val film = it
                     success(film)

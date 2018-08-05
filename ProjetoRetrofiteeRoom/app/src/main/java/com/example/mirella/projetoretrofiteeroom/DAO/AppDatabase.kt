@@ -9,7 +9,7 @@ import com.example.mirella.projetoretrofiteeroom.model.Person
 @Database(entities = [Person::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun personDao(): Person
+    abstract fun personDao(): PersonDao
 
     companion object {
 

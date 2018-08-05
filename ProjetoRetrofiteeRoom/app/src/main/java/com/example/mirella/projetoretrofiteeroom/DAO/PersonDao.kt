@@ -12,6 +12,7 @@ interface PersonDao {
     @Delete
     fun delete(person: Person)
 
-    @Query("SELECT * FROM Person")
-    fun getAll(person: Person)
+    @Query("SELECT * FROM person")
+    fun getPerson() : Person
+
 }
