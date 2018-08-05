@@ -53,8 +53,8 @@ object RequestRetrofit {
         })
     }
 
-    fun person(success : (Any) -> Unit){
-        val call = service.loadPerson("1")
+    fun person(personId : String, success : (Any) -> Unit){
+        val call = service.loadPerson(personId)
 
         call.enqueue(object : Callback<Person> {
             override fun onFailure(call: Call<Person>?, t: Throwable?) {
