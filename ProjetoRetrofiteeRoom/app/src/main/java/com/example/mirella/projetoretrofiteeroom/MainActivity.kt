@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPersonRetrofit() {
-        var number = (0..30).random()
+        val number = (0..30).random()
         RequestRetrofit.person(number.toString(), {
             val item = it as Person
             val id = instancia.personDao().insert(item)
